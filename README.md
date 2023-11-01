@@ -1,2 +1,2 @@
 # otvrac_lab
-Labosi iz predmeta "Otvoreno računalstvo"
+1. Labos iz predmeta "Otvoreno računalstvo"
