@@ -1,0 +1,180 @@
+[
+  {
+    "naziv": "Links.hr",
+    "adresa": "Dankovečka ulica 5",
+    "grad": "Zagreb",
+    "drzava": "Hrvatska",
+    "telefonski_broj": 13096944,
+    "email": " dubrava@links.hr",
+    "geolokacija": "45.83, 16.06",
+    "recenzija": 4.4,
+    "postanski_broj": 10040,
+    "vlasnici": [
+      {
+        "ime": "Vedran",
+        "prezime": "Puškarić"
+      },
+      {
+        "ime": "Denis",
+        "prezime": "Piljek"
+      }
+    ]
+  },
+  {
+    "naziv": "Elipso",
+    "adresa": "Ulica Rudolfa Kolaka 14",
+    "grad": "Zagreb",
+    "drzava": "Hrvatska",
+    "telefonski_broj": 15533094,
+    "email": "podrska@links.hr",
+    "geolokacija": "45.84, 16.05",
+    "recenzija": 4.1,
+    "postanski_broj": 10040,
+    "vlasnici": [
+      {
+        "ime": "Bernard",
+        "prezime": "Šepetanc"
+      }
+    ]
+  },
+  {
+    "naziv": "Laptopi.hr",
+    "adresa": "Dugoselska ulica 12",
+    "grad": "Zagreb",
+    "drzava": "Hrvatska",
+    "telefonski_broj": 16182261,
+    "email": "prodaja@pc1.hr",
+    "geolokacija": "45.80, 16.02",
+    "recenzija": 2.8,
+    "postanski_broj": 10000,
+    "vlasnici": [
+      {
+        "ime": "Emil",
+        "prezime": "Bogdan"
+      }
+    ]
+  },
+  {
+    "naziv": "Sancta Domenica",
+    "adresa": "Vukovarska ulica 207",
+    "grad": "Split",
+    "drzava": "Hrvatska",
+    "telefonski_broj": 72336955,
+    "email": "podrska@sancta-domenica.hr",
+    "geolokacija": "43.51, 16.50",
+    "recenzija": 4.4,
+    "postanski_broj": 21000,
+    "vlasnici": [
+      {
+        "ime": "Robert",
+        "prezime": "Škeljo"
+      }
+    ]
+  },
+  {
+    "naziv": "Instar",
+    "adresa": "Ulica Josipa Jovića 93",
+    "grad": "Split",
+    "drzava": "Hrvatska",
+    "telefonski_broj": 21440214,
+    "email": "split@instar-informatika.hr",
+    "geolokacija": "43.61, 16.48",
+    "recenzija": 4.4,
+    "postanski_broj": 21000,
+    "vlasnici": [
+      {
+        "ime": "Marko",
+        "prezime": "Cvetovski"
+      }
+    ]
+  },
+  {
+    "naziv": "HGSPOT",
+    "adresa": "Užarska ulica 18",
+    "grad": "Rijeka",
+    "drzava": "Hrvatska",
+    "telefonski_broj": 51317475,
+    "email": "rijeka@hgspot.hr",
+    "geolokacija": "45.51, 14.42",
+    "recenzija": 4.6,
+    "postanski_broj": 51000,
+    "vlasnici": [
+      {
+        "ime": "Saša",
+        "prezime": "Lončar"
+      },
+      {
+        "ime": "Vedrana",
+        "prezime": "Lončar"
+      }
+    ]
+  },
+  {
+    "naziv": "Svijet medija",
+    "adresa": "Trg Drage Iblera 10",
+    "grad": "Zagreb",
+    "drzava": "Hrvatska",
+    "telefonski_broj": 14554882,
+    "email": "importanne.galleria@svijet-medija.hr",
+    "geolokacija": "45.85, 16.00",
+    "recenzija": 4.3,
+    "postanski_broj": 10000,
+    "vlasnici": [
+      {
+        "ime": "Anđelko",
+        "prezime": "Ćurić"
+      }
+    ]
+  },
+  {
+    "naziv": "Emmezeta",
+    "adresa": "Ulica Siniše Glavaševića 1",
+    "grad": "Zagreb",
+    "drzava": "Hrvatska",
+    "telefonski_broj": 72202022,
+    "email": "info@emmezeta.hr",
+    "geolokacija": "45.80, 16.05",
+    "recenzija": 4.3,
+    "postanski_broj": 10000,
+    "vlasnici": [
+      {
+        "ime": "Andrzej",
+        "prezime": "Pawel Sitarz"
+      }
+    ]
+  },
+  {
+    "naziv": "Tehno Mag",
+    "adresa": "Tehno Mag",
+    "grad": "Zagreb",
+    "drzava": "Hrvatska",
+    "telefonski_broj": 15790602,
+    "email": "webshop@tehno-mag.hr",
+    "geolokacija": "45.81, 16.10",
+    "recenzija": 4.3,
+    "postanski_broj": 10000,
+    "vlasnici": [
+      {
+        "ime": "Zlatko",
+        "prezime": "Marošević"
+      }
+    ]
+  },
+  {
+    "naziv": "Saturn",
+    "adresa": "Alexanderplatz 3",
+    "grad": "Berlin",
+    "drzava": "Njemačka",
+    "telefonski_broj": 4922122243333,
+    "email": "shop@saturn.de",
+    "geolokacija": "52.52, 13.41",
+    "recenzija": 4.2,
+    "postanski_broj": 10178,
+    "vlasnici": [
+      {
+        "ime": "Karsten",
+        "prezime": "Wildberger"
+      }
+    ]
+  }
+]
