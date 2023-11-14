@@ -3,7 +3,7 @@
     "$id": "http://example.com/example.json",
     "type": "array",
     "default": [],
-    "Title": "Dućani tehnike",
+    "title": "Dućani tehnike",
     "description": "JSON koji sadrži neke dućane tehnike i podatke vezane uz njih, kao naziv, adresa, vlasnik....",
     "items": {
         "type": "object",
@@ -23,6 +23,7 @@
         "properties": {
             "naziv": {
                 "type": "string",
+                "title": "naziv",
                 "description": "naziv dućana",
                 "examples": [
                     "Emmezeta",
@@ -38,7 +39,8 @@
             },
             "adresa": {
                 "type": "string",
-                "description": "The adresa Schema",
+                "title": "adresa",
+                "description": "Adresa dućana",
                 "examples": [
                     "Ulica Siniše Glavaševića 1",
                     "Trg Drage Iblera 10",
@@ -53,7 +55,8 @@
             },
             "grad": {
                 "type": "string",
-                "description": "The grad Schema",
+                "title": "grad",
+                "description": "Grad u kojem se dućan nalazi",
                 "examples": [
                     "Zagreb",
                     "Berlin",
@@ -63,6 +66,7 @@
             },
             "drzava": {
                 "type": "string",
+                "title": "drzava",
                 "description": "Država u kojoj se nalazi dućan",
                 "examples": [
                     "Hrvatska",
@@ -71,6 +75,7 @@
             },
             "telefonski_broj": {
                 "type": "integer",
+                "title": "telefonski broj",
                 "description": "Telefonski broj dućana",
                 "examples": [
                     "072202022",
@@ -86,6 +91,7 @@
             },
             "email": {
                 "type": "string",
+                "title": "email",
                 "description": "email dućana za kontakt",
                 "examples": [
                     "info@emmezeta.hr",
@@ -101,6 +107,7 @@
             },
             "geolokacija": {
                 "type": "string",
+                "title": "geolokacija",
                 "description": "Geolokacija dućana u koordinatama",
                 "examples": [
                     "45.80, 16.05",
@@ -116,6 +123,7 @@
             },
             "recenzija": {
                 "type": "number",
+                "title": "recenzija",
                 "description": "Ocjene dućana s Google Maps",
                 "examples": [
                     4.3,
@@ -128,6 +136,7 @@
             },
             "postanski_broj": {
                 "type": "integer",
+                "title": "postanski broj",
                 "description": "Poštanski broj dućana",
                 "examples": [
                     "10000",
@@ -140,10 +149,12 @@
             },
             "vlasnici": {
                 "type": "array",
+                "title": "vlasnici",
                 "description": "Skup vlasnika dućana, može biti 1 ili više",
                 "items": {
                     "type": "object",
-                    "description": "A Schema",
+                    "title": "vlasnik",
+                    "description": "Instanca vlasnika, može ih biti 1 ili više",
                     "required": [
                         "ime",
                         "prezime"
@@ -151,6 +162,7 @@
                     "properties": {
                         "ime": {
                             "type": "string",
+                            "title": "ime",
                             "description": "Ime vlasnika",
                             "examples": [
                                 "Andrzej",
@@ -167,6 +179,7 @@
                         },
                         "prezime": {
                             "type": "string",
+                            "title": "ime",
                             "description": "Prezime vlasnika",
                             "examples": [
                                 "Pawel Sitarz",
