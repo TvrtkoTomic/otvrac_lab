@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Tvrtko Tomić">
+  <meta name="description" content="Web-stranica za prikaz podataka iz baze">
+  <meta name="keywords" content="dućan, tehnika, web-stranica">
+  <title>2. labos</title>
+  <link rel="stylesheet" href="static/index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Informacije o skupu podataka:</h1>
+    <h2>Opis atributa:</h2>
+    <p>
+      naziv -> naziv dućana (string) <br />
+      adresa -> adresa dućana (string) <br />
+      grad -> grad u kojem se nalaz dućan (string) <br />
+      telefonski_broj -> broj dostupan kupcima za kontakt (int) <br />
+      email -> e-mail dostupan kupcima za kontakt (string) <br />
+      geolokacija -> geografske koordinate dućana (string) <br />
+      recenzija -> ocjena dućana na Google Maps (double) <br />
+      država -> država u kojoj se dućan nalazi (string) <br />
+      poštanski_broj -> poštanski broj dužana (int) <br />
+      ime i prezime vlasnika -> navedeni trenutni vlasnik/ci dućana (string) <br />
+    </p>
+    <p>Skup podataka obuhvaća Hrvatsku i Njemačku, a spremljeni su u postgresql bazi podataka. <br />
+       Linkovi na skup podataka u JSON i CSV formatu:</p>
+    <div class="link-container">
+      <a href='static/ducani_tehnike.json'>JSON</a>
+      <a href='static/ducani_tehnike.csv'>CSV</a>
+      <a href="/datatable">Datatable</a>
+
+    </div>
+  </div>
+</body>
+
+</html>

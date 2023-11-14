@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Tvrtko Tomić">
+  <meta name="description" content="Web-stranica za prikaz podataka iz baze">
+  <meta name="keywords" content="dućan, tehnika, web-stranica">
+  <title>2.labos - datatable</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+</head>
+
+<body>
+
+  <table id="table">
+    <thead>
+      <tr>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Naziv</th>
+        <th>Adresa</th>
+        <th>Grad</th>
+        <th>Država</th>
+        <th>Telefonski broj</th>
+        <th>Poštanski broj</th>
+        <th>E-mail</th>
+        <th>Geolokacija</th>
+        <th>Recenzija</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+      <tr>
+        <td>{{row[11]}}</td>
+        <td>{{row[12]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[5]}}</td>
+        <td>{{row[9]}}</td>
+        <td>{{row[6]}}</td>
+        <td>{{row[7]}}</td>
+        <td>{{row[8]}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <form id="filterForm">
+    <label for="columnSelect">Odaberi atribut:</label>
+    <select id="columnSelect">
+      <option value="0">Ime</option>
+      <option value="1">Prezime</option>
+      <option value="2">Naziv</option>
+      <option value="3">Adresa</option>
+      <option value="4">Grad</option>
+      <option value="5">Država</option>
+      <option value="6">Telefonski broj</option>
+      <option value="7">Poštanski broj</option>
+      <option value="8">E-mail</option>
+      <option value="9">Geolokacija</option>
+      <option value="10">Recenzija</option>
+    </select>
+
+    <label for="filterInput">Pronađi:</label>
+    <input type="text" id="filterInput" placeholder="Unesi">
+
+    <button type="button" onclick="applyFilter()">Traži</button>
+    <button id="exportJsonButton">Export to JSON</button>
+    <button id="exportCsvButton">Export to CSV</button>
+  </form>
+  <a href="/">Back</a>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+  <script>
+    var dataTable;
+
+    $(document).ready(function () {
+      dataTable = $('#table').DataTable();
+      $("#exportJsonButton").click(function() {
+            
+        var tableData = [];
+        var uniqueNames = [];
+
+        $('#table tbody tr').each(function (row, tr) {
+            var name = $(tr).find('td:eq(2)').text();
+            var owner = {
+                "ime": $(tr).find('td:eq(0)').text(),
+                "prezime": $(tr).find('td:eq(1)').text()
+            };
+
+            if (!uniqueNames.includes(name)) {
+                uniqueNames.push(name);
+                tableData.push({
+                    "naziv": name,
+                    "adresa": $(tr).find('td:eq(3)').text(),
+                    "grad": $(tr).find('td:eq(4)').text(),
+                    "drzava": $(tr).find('td:eq(5)').text(),
+                    "telefonski_broj": $(tr).find('td:eq(6)').text(),
+                    "email": $(tr).find('td:eq(8)').text(),
+                    "geolokacija": $(tr).find('td:eq(9)').text(),
+                    "recenzija": parseFloat($(tr).find('td:eq(10)').text()),
+                    "postanski_broj": $(tr).find('td:eq(7)').text(),
+                    "vlasnici": [owner]
+                });
+            } else {
+                var existingIndex = tableData.findIndex(item => item.naziv === name);
+                tableData[existingIndex].vlasnici.push(owner);
+            }
+        });
+
+        var jsonString = JSON.stringify(tableData, null, 2);
+
+        var blob = new Blob([jsonString], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'datatable.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);;
+        });
+
+        $("#exportCsvButton").click(function() {
+            var csvData = [];
+            var headers = [];
+            $('#table thead th').each(function(index, th) {
+                headers.push($(th).text());
+            });
+            csvData.push(headers);
+
+            $('#table tbody tr').each(function(row, tr) {
+                var rowData = [];
+                $(tr).find('td').each(function(index, td) {
+                    rowData.push($(td).text());
+                });
+                csvData.push(rowData);
+            });
+
+            var csvContent = csvData.map(row => row.join(',')).join('\n');
+            var blob = new Blob([csvContent], { type: 'text/csv' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'datatable.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    });
+
+    function applyFilter() {
+      var columnSelect = $('#columnSelect').val();
+      var filterValue = $('#filterInput').val();
+
+      dataTable.columns().search('').draw();
+      dataTable.columns(columnSelect).search(filterValue).draw();
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "type": "array",
+    "default": [],
+    "Title": "Dućani tehnike",
+    "description": "JSON koji sadrži neke dućane tehnike i podatke vezane uz njih, kao naziv, adresa, vlasnik....",
+    "items": {
+        "type": "object",
+        "description": "Jedan redak iz baze,",
+        "required": [
+            "naziv",
+            "adresa",
+            "grad",
+            "drzava",
+            "telefonski_broj",
+            "email",
+            "geolokacija",
+            "recenzija",
+            "postanski_broj",
+            "vlasnici"
+        ],
+        "properties": {
+            "naziv": {
+                "type": "string",
+                "description": "naziv dućana",
+                "examples": [
+                    "Emmezeta",
+                    "Svijet medija",
+                    "Elipso",
+                    "Links.hr",
+                    "Laptopi.hr",
+                    "Saturn",
+                    "Instar",
+                    "Sancta Domenica",
+                    "HGSPOT"
+                ]
+            },
+            "adresa": {
+                "type": "string",
+                "description": "The adresa Schema",
+                "examples": [
+                    "Ulica Siniše Glavaševića 1",
+                    "Trg Drage Iblera 10",
+                    "Ulica Rudolfa Kolaka 14",
+                    "Dankovečka ulica 5",
+                    "Dugoselska ulica 12",
+                    "Alexanderplatz 3",
+                    "Ulica Josipa Jovića 93",
+                    "Vukovarska ulica 207",
+                    "Užarska ulica 18"
+                ]
+            },
+            "grad": {
+                "type": "string",
+                "description": "The grad Schema",
+                "examples": [
+                    "Zagreb",
+                    "Berlin",
+                    "Split",
+                    "Rijeka"
+                ]
+            },
+            "drzava": {
+                "type": "string",
+                "description": "Država u kojoj se nalazi dućan",
+                "examples": [
+                    "Hrvatska",
+                    "Njemačka"
+                ]
+            },
+            "telefonski_broj": {
+                "type": "integer",
+                "description": "Telefonski broj dućana",
+                "examples": [
+                    "072202022",
+                    "014554882",
+                    "015533094",
+                    "013096944",
+                    "016182261",
+                    "4922122243333",
+                    "021440214",
+                    "072336955",
+                    "051317475"
+                ]
+            },
+            "email": {
+                "type": "string",
+                "description": "email dućana za kontakt",
+                "examples": [
+                    "info@emmezeta.hr",
+                    "importanne.galleria@svijet-medija.hr",
+                    "podrska@links.hr",
+                    " dubrava@links.hr",
+                    "prodaja@pc1.hr",
+                    "shop@saturn.de",
+                    "split@instar-informatika.hr",
+                    "podrska@sancta-domenica.hr",
+                    "rijeka@hgspot.hr"
+                ]
+            },
+            "geolokacija": {
+                "type": "string",
+                "description": "Geolokacija dućana u koordinatama",
+                "examples": [
+                    "45.80, 16.05",
+                    "45.85, 16.00",
+                    "45.84, 16.05",
+                    "45.83, 16.06",
+                    "45.80, 16.02",
+                    "52.52, 13.41",
+                    "43.61, 16.48",
+                    "43.51, 16.50",
+                    "45.51, 14.42"
+                ]
+            },
+            "recenzija": {
+                "type": "number",
+                "description": "Ocjene dućana s Google Maps",
+                "examples": [
+                    4.3,
+                    4.1,
+                    4.4,
+                    2.8,
+                    4.2,
+                    4.6
+                ]
+            },
+            "postanski_broj": {
+                "type": "integer",
+                "description": "Poštanski broj dućana",
+                "examples": [
+                    "10000",
+                    "10040 ",
+                    "10000 ",
+                    "10178",
+                    "21000",
+                    "51000"
+                ]
+            },
+            "vlasnici": {
+                "type": "array",
+                "description": "Skup vlasnika dućana, može biti 1 ili više",
+                "items": {
+                    "type": "object",
+                    "description": "A Schema",
+                    "required": [
+                        "ime",
+                        "prezime"
+                    ],
+                    "properties": {
+                        "ime": {
+                            "type": "string",
+                            "description": "Ime vlasnika",
+                            "examples": [
+                                "Andrzej",
+                                "Anđelko",
+                                "Bernard",
+                                "Denis",
+                                "Vedran",
+                                "Emil",
+                                "Karsten",
+                                "Marko",
+                                "Robert ",
+                                "Saša"
+                            ]
+                        },
+                        "prezime": {
+                            "type": "string",
+                            "description": "Prezime vlasnika",
+                            "examples": [
+                                "Pawel Sitarz",
+                                "Ćurić",
+                                "Šepetanc",
+                                "Piljek",
+                                "Puškarić",
+                                "Bogdan",
+                                "Wildberger",
+                                "Cvetovski",
+                                "Škeljo",
+                                "Lončar"
+                            ]
+                        }
+                    }
+                }
+                    
+                
+                
+            }
+        }
+    }
+       
+}

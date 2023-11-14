@@ -1,0 +1,13 @@
+naziv,adresa,grad,drzava,telefonski_broj,email,geolokacija,recenzija,postanski_broj,id,ime,prezime
+Links.hr,Dankovečka ulica 5,Zagreb,Hrvatska,013096944,dubrava@links.hr,"45.83, 16.06",4.4,10040 ,1,Vedran,Puškarić
+Sancta Domenica,Vukovarska ulica 207,Split,Hrvatska,072336955,podrska@sancta-domenica.hr,"43.51, 16.50",4.4,21000,5,Robert,Škeljo
+Elipso,Ulica Rudolfa Kolaka 14,Zagreb,Hrvatska,015533094,podrska@links.hr,"45.84, 16.05",4.1,10040 ,3,Bernard,Šepetanc
+Links.hr,Dankovečka ulica 5,Zagreb,Hrvatska,013096944,dubrava@links.hr,"45.83, 16.06",4.4,10040 ,2,Denis,Piljek
+Instar,Ulica Josipa Jovića 93,Split,Hrvatska,021440214,split@instar-informatika.hr,"43.61, 16.48",4.4,21000,6,Marko,Cvetovski
+HGSPOT,Užarska ulica 18,Rijeka,Hrvatska,051317475,rijeka@hgspot.hr,"45.51, 14.42",4.6,51000,8,Saša,Lončar
+HGSPOT,Užarska ulica 18,Rijeka,Hrvatska,051317475,rijeka@hgspot.hr,"45.51, 14.42",4.6,51000,7,Vedrana,Lončar
+Saturn,Alexanderplatz 3,Berlin,Njemačka,4922122243333,shop@saturn.de,"52.52, 13.41",4.2,10178,12,Karsten,Wildberger
+Tehno Mag,Tehno Mag,Zagreb,Hrvatska,015790602,webshop@tehno-mag.hr,"45.81, 16.10",4.3,10000,11,Zlatko,Marošević
+Svijet medija,Trg Drage Iblera 10,Zagreb,Hrvatska,014554882,importanne.galleria@svijet-medija.hr,"45.85, 16.00",4.3,10000,9,Anđelko,Ćurić
+Emmezeta,Ulica Siniše Glavaševića 1,Zagreb,"Hrvatska",072202022,info@emmezeta.hr,"45.80, 16.05",4.3,10000,10,Andrzej,Pawel Sitarz
+Laptopi.hr,Dugoselska ulica 12,Zagreb,Hrvatska,016182261,prodaja@pc1.hr,"45.80, 16.02",2.8,10000,13,Emil,Bogdan

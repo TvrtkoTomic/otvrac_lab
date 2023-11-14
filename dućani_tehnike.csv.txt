@@ -1,0 +1,11 @@
+Links.hr,Dankovečka ulica 5,Zagreb,Hrvatska,13096944, dubrava@links.hr,"45.83, 16.06",4.4,10040,Vedran|Puškarić|Denis|Piljek
+Elipso,Ulica Rudolfa Kolaka 14,Zagreb,Hrvatska,15533094,podrska@links.hr,"45.84, 16.05",4.1,10040,Bernard|Šepetanc
+Laptopi.hr,Dugoselska ulica 12,Zagreb,Hrvatska,16182261,prodaja@pc1.hr,"45.80, 16.02",2.8,10000,Emil|Bogdan
+Sancta Domenica,Vukovarska ulica 207,Split,Hrvatska,72336955,podrska@sancta-domenica.hr,"43.51, 16.50",4.4,21000,Robert|Škeljo
+Instar,Ulica Josipa Jovića 93,Split,Hrvatska,21440214,split@instar-informatika.hr,"43.61, 16.48",4.4,21000,Marko|Cvetovski
+HGSPOT,Užarska ulica 18,Rijeka,Hrvatska,51317475,rijeka@hgspot.hr,"45.51, 14.42",4.6,51000,Saša|Lončar|Vedrana|Lončar
+Svijet medija,Trg Drage Iblera 10,Zagreb,Hrvatska,14554882,importanne.galleria@svijet-medija.hr,"45.85, 16.00",4.3,10000,Anđelko|Ćurić
+Emmezeta,Ulica Siniše Glavaševića 1,Zagreb,Hrvatska,72202022,info@emmezeta.hr,"45.80, 16.05",4.3,10000,Andrzej|Pawel Sitarz
+Tehno Mag,Tehno Mag,Zagreb,Hrvatska,15790602,webshop@tehno-mag.hr,"45.81, 16.10",4.3,10000,Zlatko|Marošević
+Saturn,Alexanderplatz 3,Berlin,Njemačka,4922122243333,shop@saturn.de,"52.52, 13.41",4.2,10178,Karsten|Wildberger
+
