@@ -50,6 +50,7 @@
   <form id="filterForm">
     <label for="columnSelect">Odaberi atribut:</label>
     <select id="columnSelect">
+      <option value="-1">Cijela tablica</option>
       <option value="0">Ime</option>
       <option value="1">Prezime</option>
       <option value="2">Naziv</option>
@@ -70,6 +71,16 @@
     <button id="exportJsonButton">Export to JSON</button>
     <button id="exportCsvButton">Export to CSV</button>
   </form>
+  <h2>Unos novih podataka:</h2>
+  <div class="form">
+    <form class="create" action="/ducani_tehnike/create" method="post">
+      <input type="id" name="id" placeholder="id">
+      <input type="datum" name="datum" placeholder="datum">
+      
+      <input type="kolicina" name="kolicina" placeholder="kolicina">
+      <input type="submit" value="Create">
+    </form>
+  </div>
   <a href="/">Back</a>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -158,9 +169,13 @@
       var columnSelect = $('#columnSelect').val();
       var filterValue = $('#filterInput').val();
 
-      dataTable.columns().search('').draw();
-      dataTable.columns(columnSelect).search(filterValue).draw();
+      if (columnSelect === "-1") {
+        dataTable.search(filterValue).draw();
+      } else {
+        dataTable.columns().search('').draw();
+        dataTable.columns(columnSelect).search(filterValue).draw();
     }
+  }
   </script>
 
 </body>

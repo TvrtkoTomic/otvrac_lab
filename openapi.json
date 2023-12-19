@@ -1,0 +1,295 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Dućani tehnike i vlasnici 3.0",
+    "description": "Kratki popis dućana tehnike, njihovih vlasnika i još korisnih informacija vezanih uz njih",
+    "version": "3.0",
+    "contact": {
+      "email": "tvrtko.tomic@fer.hr"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "paths": {
+    "/api/ducani_vlasnici": {
+      "get": {
+        "tags": [
+          "dućani, vlasnici"
+        ],
+        "summary": "Prikaz dućana i njihovih vlasnika, uz dodatne informacije",
+        "description": "Vraća JSON tablice koja stranica već prikazuje",
+        "responses": {
+          "200": {
+            "description": "Uspješan dohvat resursa"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      }
+    },
+    "/api/ducani_vlasnici/{id}": {
+      "get": {
+        "tags": [
+          "dućani, vlasnici"
+        ],
+        "summary": "Vraća dućane i njihove vlasnike po ID-u",
+        "description": "Vraća JSON dućan i njegove vlasnike iz baze podataka preko ID-a iz rute, uz dodatne podatke",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID dućana",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Uspješan dohvat resursa"
+          },
+          "400": {
+            "description": "Krivi ID upisan"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      }
+    },
+    "/api/dućani_tehnike": {
+      "get": {
+        "tags": [
+          "dućani"
+        ],
+        "summary": "Prikaz dućana, uz dodatne informacije",
+        "description": "Vraća JSON tablice iz baze podataka",
+        "responses": {
+          "200": {
+            "description": "Uspješan dohvat"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "dućani"
+        ],
+        "summary": "Dodavanje novog dućana u bazu",
+        "description": "Preko dobivenog JSON-a upisuje novi redak u bazu podataka",
+        "responses": {
+          "200": {
+            "description": "Uspješan zapis"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "dućani"
+        ],
+        "summary": "Izmjena podataka u bazi",
+        "description": "Osvježava određeni redak u bazi s obzirom na dobiveni JSON",
+        "responses": {
+          "200": {
+            "description": "Uspješan zapis"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      }
+    },
+    "/api/vlasnici": {
+      "get": {
+        "tags": [
+          "vlasnici"
+        ],
+        "summary": "Prikaz svih vlasnica uz id dućana kojeg posjeduju",
+        "description": "Vraća JSON tablice iz baze podataka",
+        "responses": {
+          "200": {
+            "description": "Uspješan dohvat"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "vlasnici"
+        ],
+        "summary": "Dodavanje novog vlasnika u bazu",
+        "description": "Preko dobivenog JSON-a upisuje novi redak u bazu podataka",
+        "responses": {
+          "200": {
+            "description": "Uspješan zapis"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "vlasnici"
+        ],
+        "summary": "Izmjena podataka u bazi",
+        "description": "Osvježava određeni redak u bazi s obzirom na dobiveni JSON",
+        "responses": {
+          "200": {
+            "description": "Uspješan zapis"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      }
+    },
+    "/api/ducani_tehnike/{id}": {
+      "get": {
+        "tags": [
+          "dućani"
+        ],
+        "summary": "Vraća dućan po ID-u",
+        "description": "Vraća dućan iz baze podataka preko ID-a iz rute vraća JSON specifićnog dućana iz baze podataka i podatke vezane uz njega",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID dućana",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Uspješan dohvat resursa"
+          },
+          "400": {
+            "description": "Krivi ID upisan"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "dućani"
+        ],
+        "summary": "Briše dućan po ID-u",
+        "description": "Briše dućan iz baze podataka preko ID-a iz rute",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID dućana",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Uspješno brisanje"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      }
+    },
+    "/api/vlasnici/{id}": {
+      "get": {
+        "tags": [
+          "vlasnici"
+        ],
+        "summary": "Vraća dućan po ID-u",
+        "description": "Vraća dućan iz baze podataka preko ID-a iz rute vraća JSON specifićnog dućana iz baze podataka i podatke vezane uz njega",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID dućana",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Uspješan dohvat resursa"
+          },
+          "400": {
+            "description": "Krivi ID upisan"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "vlasnici"
+        ],
+        "summary": "Briše vlasnika po ID-u",
+        "description": "Briše vlasnik iz baze podataka preko ID-a iz rute",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID vlasnika",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Uspješno brisanje"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      }
+    },
+    "/api/doc": {
+      "get": {
+        "tags": [
+          "dokumentacija"
+        ],
+        "summary": "Prikaz trenutne specifikacije",
+        "description": "Vraća JSON specifikacije OpenAPI",
+        "responses": {
+          "200": {
+            "description": "Uspješan dohvat"
+          },
+          "404": {
+            "description": "Resurs nije nađen"
+          }
+        }
+      }
+    }
+  }
+}
