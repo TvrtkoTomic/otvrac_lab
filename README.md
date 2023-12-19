@@ -1,6 +1,5 @@
-# 2. Labos iz predmeta "Otvoreno računalstvo"
-U ovom labosu sam napravio web-stranicu u pomoću HTML-a za frontend i Flaska(Python) za backend. Prva stranica sadrži osnovne podatke o skupu podataka, kao README od prošlog labosa, i ima link na JSON i CSV. Druga stranica ima tablični prikaz podataka pomoću datatable, te omogućeno filtriranje tablice općenito (built-in u datatable) ili po atributu/stupcu. Također se može skinuti CSV i JSON filtrirane tablice. 
-## Opis podataka:
+# 3. Labos iz predmeta "Otvoreno računalstvo"
+U ovom labosu sam napravio API koji omogućuje direktnu interakciju s podatcima u bazi podataka. Moguće je preuzeti, dodati, modificirati i izbrisati odrešene podatke iz tablice preko njega. Također je napravljena OpenAPI dokumentacija API-ja.
 - Izdavač: Tvrtko Tomić
 - Datum izdanja: 14.11.2023.
 - Licensa: CC BY 4.0
@@ -9,8 +8,8 @@ U ovom labosu sam napravio web-stranicu u pomoću HTML-a za frontend i Flaska(Py
 - Zemlje pokrivene: Hrvatska, Njemačka
 - Baza: postgresql
 - Frontend: HTML + CSS
-- Backend: Flask (Python)
-- ključne riječi: dućan, tehnika, web-stranica, JSON, CSV
+- Backend + API: Flask (Python)
+- ključne riječi: dućan, tehnika, web-stranica, JSON, CSV, API, postgresql
 - opis atributa:
     - naziv -> naziv dućana (string)
     - adresa -> adresa dućana (string)
