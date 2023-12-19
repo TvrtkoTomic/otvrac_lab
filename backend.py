@@ -46,9 +46,16 @@ def svi_ducani_i_vlasnici():
     cur.close()
     conn.close()
     json_data = jsonify(data)
-    response = app.response_class(response=json_data.get_data(as_text=True),
-                                  status=200,
+    if json_data == None:
+        response = app.response_class(response=json_data.get_data(as_text=True),
+                                  status=404,
                                   mimetype='application/json')
+        response.headers['Message'] = "Uspjesan dohvat resursa"
+    else:
+        response = app.response_class(response=json_data.get_data(as_text=True),
+                                  status=404,
+                                  mimetype='application/json')
+        response.headers['Message'] = "Resurs nije nađen"
     return response
 
 @app.route("/api/ducani_vlasnici/<id>", methods= ['GET'])
@@ -65,9 +72,16 @@ def specifican_ducan_i_vlasnik(id):
     cur.close()
     conn.close()
     json_data = jsonify(data)
-    response = app.response_class(response=json_data.get_data(as_text=True),
-                                  status=200,
+    if json_data == None:
+        response = app.response_class(response=json_data.get_data(as_text=True),
+                                  status=404,
                                   mimetype='application/json')
+        response.headers['Message'] = "Uspjesan dohvat resursa"
+    else:
+        response = app.response_class(response=json_data.get_data(as_text=True),
+                                  status=404,
+                                  mimetype='application/json')
+        response.headers['Message'] = "Resurs nije naden"
     return response
 
 @app.route("/api/ducani_tehnike/", methods= ['GET'])
@@ -83,9 +97,16 @@ def ducani_tehnike():
     data = cur.fetchall()
     cur.close()
     conn.close()
-    response = app.response_class(response=json_data.get_data(as_text=True),
-                                  status=200,
+    if json_data == None:
+        response = app.response_class(response=json_data.get_data(as_text=True),
+                                  status=404,
                                   mimetype='application/json')
+        response.headers['Message'] = "Uspjesan dohvat resursa"
+    else:
+        response = app.response_class(response=json_data.get_data(as_text=True),
+                                  status=404,
+                                  mimetype='application/json')
+        response.headers['Message'] = "Resurs nije naden"
     return response
 
 
@@ -105,6 +126,7 @@ def izbrisi_ducan(id):
     response = app.response_class(
                                   status=200,
                                   mimetype='application/json')
+    response.headers['Message'] = "Uspjesan dohvat resursa"
     return response
     
 
@@ -122,9 +144,16 @@ def specifican_ducan(id):
     cur.close()
     conn.close()
     json_data = jsonify(data)
-    response = app.response_class(response=json_data.get_data(as_text=True),
-                                  status=200,
+    if json_data == None:
+        response = app.response_class(response=json_data.get_data(as_text=True),
+                                  status=404,
                                   mimetype='application/json')
+        response.headers['Message'] = "Uspjesan dohvat resursa"
+    else:
+        response = app.response_class(response=json_data.get_data(as_text=True),
+                                  status=404,
+                                  mimetype='application/json')
+        response.headers['Message'] = "Resurs nije naden"
     return response
 
 @app.route("/api/vlasnici/", methods= ['GET'])
@@ -141,9 +170,16 @@ def svi_vlasnici():
     cur.close()
     conn.close()
     json_data = jsonify(data)
-    response = app.response_class(response=json_data.get_data(as_text=True),
-                                  status=200,
+    if json_data == None:
+        response = app.response_class(response=json_data.get_data(as_text=True),
+                                  status=404,
                                   mimetype='application/json')
+        response.headers['Message'] = "Uspjesan dohvat resursa"
+    else:
+        response = app.response_class(response=json_data.get_data(as_text=True),
+                                  status=404,
+                                  mimetype='application/json')
+        response.headers['Message'] = "Resurs nije naden"
     return response
 
 @app.route("/api/vlasnici/<id>", methods= ['DELETE'])
@@ -160,7 +196,11 @@ def izbrisi_vlasnik(id):
     conn.commit()
     cur.close()
     conn.close()
-    return("True")
+    response = app.response_class(
+                                  status=200,
+                                  mimetype='application/json')
+    response.headers['Message'] = "Uspjesan dohvat resursa"
+    return response
     
 
 @app.route("/api/vlasnici/<id>", methods= ['GET'])
@@ -177,9 +217,16 @@ def specifican_vlasnik(id):
     cur.close()
     conn.close()
     json_data = jsonify(data)
-    response = app.response_class(response=json_data.get_data(as_text=True),
-                                  status=200,
+    if json_data == None:
+        response = app.response_class(response=json_data.get_data(as_text=True),
+                                  status=404,
                                   mimetype='application/json')
+        response.headers['Message'] = "Uspjesan dohvat resursa"
+    else:
+        response = app.response_class(response=json_data.get_data(as_text=True),
+                                  status=404,
+                                  mimetype='application/json')
+        response.headers['Message'] = "Resurs nije naden"
     return response
 
 @app.route('/api/ducani_tehnike', methods= ['POST'])
@@ -211,7 +258,11 @@ def stvori_ducan():
     #Raskid veze sa bazom
     cur.close()
     conn.close()
-    return("True")
+    response = app.response_class(
+                                  status=200,
+                                  mimetype='application/json')
+    response.headers['Message'] = "Uspješan dohvat resursa"
+    return response
 
     
 
@@ -248,6 +299,7 @@ def osvjezi_ducan():
     response = app.response_class(
                                   status=200,
                                   mimetype='application/json')
+    response.headers['Message'] = "Uspjesan dohvat resursa"
     return response
     
 @app.route('/api/vlasnici/', methods= ['POST'])
@@ -278,6 +330,7 @@ def stvori_vlasnika():
     response = app.response_class(
                                   status=200,
                                   mimetype='application/json')
+    response.headers['Message'] = "Uspjesan dohvat resursa"
     return response
     
 @app.route('/api/vlasnici', methods= ['PUT'])
@@ -307,6 +360,7 @@ def osvjezi_vlasnika():
     response = app.response_class(
                                   status=200,
                                   mimetype='application/json')
+    response.headers['Message'] = "Uspješan dohvat resursa"
     return response
 
 @app.route('/api/doc', methods= ['GET'])
