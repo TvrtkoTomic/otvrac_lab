@@ -1,9 +1,9 @@
 # 3. Labos iz predmeta "Otvoreno računalstvo"
-U ovom labosu sam napravio API koji omogućuje direktnu interakciju s podatcima u bazi podataka. Moguće je preuzeti, dodati, modificirati i izbrisati odrešene podatke iz tablice preko njega. Također je napravljena OpenAPI dokumentacija API-ja.
+U ovom labosu sam napravio API koji omogućuje direktnu interakciju s podatcima u bazi podataka. Moguće je preuzeti, dodati, modificirati i izbrisati odrešene podatke iz tablice preko njega. Također je napravljena OpenAPI dokumentacija API-ja. Sada bi podatci iz prvog labosa trebali biti dostupni preko API-ja.
 - Izdavač: Tvrtko Tomić
 - Datum izdanja: 14.11.2023.
 - Licensa: CC BY 4.0
-- Verzija: 2.0
+- Verzija: 3.0
 - Jezik: hrvatski
 - Zemlje pokrivene: Hrvatska, Njemačka
 - Baza: postgresql
