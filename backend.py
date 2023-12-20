@@ -46,16 +46,16 @@ def svi_ducani_i_vlasnici():
     cur.close()
     conn.close()
     json_data = jsonify(data)
-    if json_data == None:
+    if json_data != "":
         response = app.response_class(response=json_data.get_data(as_text=True),
-                                  status=404,
+                                  status=200,
                                   mimetype='application/json')
         response.headers['Message'] = "Uspjesan dohvat resursa"
     else:
         response = app.response_class(response=json_data.get_data(as_text=True),
                                   status=404,
                                   mimetype='application/json')
-        response.headers['Message'] = "Resurs nije nađen"
+        response.headers['Message'] = "Resurs nije naden"
     return response
 
 @app.route("/api/ducani_vlasnici/<id>", methods= ['GET'])
@@ -72,9 +72,9 @@ def specifican_ducan_i_vlasnik(id):
     cur.close()
     conn.close()
     json_data = jsonify(data)
-    if json_data == None:
+    if json_data != "":
         response = app.response_class(response=json_data.get_data(as_text=True),
-                                  status=404,
+                                  status=200,
                                   mimetype='application/json')
         response.headers['Message'] = "Uspjesan dohvat resursa"
     else:
@@ -97,9 +97,10 @@ def ducani_tehnike():
     data = cur.fetchall()
     cur.close()
     conn.close()
-    if json_data == None:
+    json_data = jsonify(data)
+    if json_data != "":
         response = app.response_class(response=json_data.get_data(as_text=True),
-                                  status=404,
+                                  status=200,
                                   mimetype='application/json')
         response.headers['Message'] = "Uspjesan dohvat resursa"
     else:
@@ -144,9 +145,9 @@ def specifican_ducan(id):
     cur.close()
     conn.close()
     json_data = jsonify(data)
-    if json_data == None:
+    if json_data != "":
         response = app.response_class(response=json_data.get_data(as_text=True),
-                                  status=404,
+                                  status=200,
                                   mimetype='application/json')
         response.headers['Message'] = "Uspjesan dohvat resursa"
     else:
@@ -170,9 +171,9 @@ def svi_vlasnici():
     cur.close()
     conn.close()
     json_data = jsonify(data)
-    if json_data == None:
+    if json_data != "":
         response = app.response_class(response=json_data.get_data(as_text=True),
-                                  status=404,
+                                  status=200,
                                   mimetype='application/json')
         response.headers['Message'] = "Uspjesan dohvat resursa"
     else:
@@ -217,9 +218,9 @@ def specifican_vlasnik(id):
     cur.close()
     conn.close()
     json_data = jsonify(data)
-    if json_data == None:
+    if json_data != "":
         response = app.response_class(response=json_data.get_data(as_text=True),
-                                  status=404,
+                                  status=200,
                                   mimetype='application/json')
         response.headers['Message'] = "Uspjesan dohvat resursa"
     else:
@@ -233,6 +234,7 @@ def specifican_vlasnik(id):
 def stvori_ducan():
     conn = psycopg2.connect(
         host=HOST,
+        port=PORT,
         database=DATABASE,
         user=USER,
         password=PASSWORD)
@@ -261,7 +263,7 @@ def stvori_ducan():
     response = app.response_class(
                                   status=200,
                                   mimetype='application/json')
-    response.headers['Message'] = "Uspješan dohvat resursa"
+    response.headers['Message'] = "Uspjesan dohvat resursa"
     return response
 
     
@@ -270,6 +272,7 @@ def stvori_ducan():
 def osvjezi_ducan():
     conn = psycopg2.connect(
         host=HOST,
+        port=PORT,
         database=DATABASE,
         user=USER,
         password=PASSWORD)
@@ -287,8 +290,7 @@ def osvjezi_ducan():
     recenzija = podatci["recenzija"]
     postanski_broj = podatci["postanski_broj"]
     cur.execute(
-        '''UPDATE ducani_tehnike SET naziv = %s, adresa = %s, grad = %s, drzava = %s, telefonski_broj = %s \
-        email = %s, geolokacija = %s, recenzija = %s, postanski_broj = %s WHERE ducan_id = %s''',
+        '''UPDATE ducani_tehnike SET naziv = %s, adresa = %s, grad = %s, drzava = %s, telefonski_broj = %s, email = %s, geolokacija = %s, recenzija = %s, postanski_broj = %s WHERE ducan_id = %s''',
         (naziv, adresa, grad, drzava, telefonski_broj, email, geolokacija, recenzija, postanski_broj, ducan_id))
     conn.commit()
 
@@ -299,19 +301,20 @@ def osvjezi_ducan():
     response = app.response_class(
                                   status=200,
                                   mimetype='application/json')
-    response.headers['Message'] = "Uspjesan dohvat resursa"
+    response.headers['Message'] = "Uspjesno azuriranje resursa"
     return response
     
 @app.route('/api/vlasnici/', methods= ['POST'])
 def stvori_vlasnika():
     conn = psycopg2.connect(
         host=HOST,
+        port=PORT,
         database=DATABASE,
         user=USER,
         password=PASSWORD)
     cur = conn.cursor()
 
-    podatci = request.get_json()
+    podatci = request.get_json(force=True)
     id= podatci["id"]
     ime = podatci["ime"]
     prezime = podatci["prezime"]
@@ -330,13 +333,14 @@ def stvori_vlasnika():
     response = app.response_class(
                                   status=200,
                                   mimetype='application/json')
-    response.headers['Message'] = "Uspjesan dohvat resursa"
+    response.headers['Message'] = "Uspjesno stvaranje resursa"
     return response
     
 @app.route('/api/vlasnici', methods= ['PUT'])
 def osvjezi_vlasnika():
     conn = psycopg2.connect(
         host=HOST,
+        port=PORT,
         database=DATABASE,
         user=USER,
         password=PASSWORD)
@@ -360,7 +364,7 @@ def osvjezi_vlasnika():
     response = app.response_class(
                                   status=200,
                                   mimetype='application/json')
-    response.headers['Message'] = "Uspješan dohvat resursa"
+    response.headers['Message'] = "Uspjesno azuriranje resursa"
     return response
 
 @app.route('/api/doc', methods= ['GET'])
