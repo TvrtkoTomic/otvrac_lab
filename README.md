@@ -1,15 +1,16 @@
-# 3. Labos iz predmeta "Otvoreno računalstvo"
-U ovom labosu sam napravio API koji omogućuje direktnu interakciju s podatcima u bazi podataka. Moguće je preuzeti, dodati, modificirati i izbrisati odrešene podatke iz tablice preko njega. Također je napravljena OpenAPI dokumentacija API-ja. Sada bi podatci iz prvog labosa trebali biti dostupni preko API-ja.
+# 4. Labos iz predmeta "Otvoreno računalstvo"
+U ovom labosu sam dodao Auth0 i pomoću njega omogućio registraciju i login korisnika na web-stranicu. Stranica pamti je li korisnik ulogiran i onemogućuje pristup "zaštićenom" dijelu bez registracije/logina. Osim toga je promijenjen JSON koji API vraća, sada vraća i semantičku nadopunu za resurse iz baze podataka.
 - Izdavač: Tvrtko Tomić
-- Datum izdanja: 14.11.2023.
+- Datum izdanja: 14.1.2024.
 - Licensa: CC BY 4.0
-- Verzija: 3.0
+- Verzija: 4.0
 - Jezik: hrvatski
 - Zemlje pokrivene: Hrvatska, Njemačka
 - Baza: postgresql
 - Frontend: HTML + CSS
 - Backend + API: Flask (Python)
-- ključne riječi: dućan, tehnika, web-stranica, JSON, CSV, API, postgresql
+- Authentikacija: Auth0 2.0
+- ključne riječi: dućan, tehnika, web-stranica, JSON, CSV, API, postgresql, Auth0, JSON-LD
 - opis atributa:
     - naziv -> naziv dućana (string)
     - adresa -> adresa dućana (string)
