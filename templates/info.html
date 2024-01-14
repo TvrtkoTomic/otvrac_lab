@@ -7,9 +7,12 @@
   <meta name="author" content="Tvrtko Tomić">
   <meta name="description" content="Web-stranica za prikaz podataka iz baze">
   <meta name="keywords" content="dućan, tehnika, web-stranica">
-  <title>Prijava</title>
-  <link rel="stylesheet" href="static/index.css">
+  <title>Info</title>
 </head>
 <body>
-    <p><a href="/login">Prijavi se</a></p>
+    <h1>Korisnički e-mail: {{session.userinfo.name}}</h1>
+    <h1>Stanje verifikacije e-maila: {{session.userinfo.email_verified}}</h1>
+    <h1>Korisnički nadimak: {{session.userinfo.nickname}}</h1>
+    <h1>Zadnje ažuriran: {{session.userinfo.updated_at}}</h1>
+        <p><a href="/home">Nazad</a></p>
 </body>

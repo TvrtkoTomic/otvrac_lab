@@ -1,11 +1,44 @@
-from flask import Flask, render_template, jsonify, request, Response, send_file, json
-import os
+from flask import Flask, render_template, jsonify, request, Response, send_file, json, url_for, session,redirect
+import json
+from os import environ as env
+from urllib.parse import quote_plus, urlencode
+from authlib.integrations.flask_client import OAuth
+from dotenv import find_dotenv, load_dotenv
 import psycopg2
-app = Flask(__name__)
+from functools import wraps
 
+ENV_FILE = find_dotenv('app.env')
+if ENV_FILE:
+    load_dotenv(ENV_FILE)
+app = Flask(__name__)
+app.secret_key = env.get("APP_SECRET_KEY")
+print(app.secret_key)
+oauth = OAuth(app)
+
+oauth.register(
+    "auth0",
+    client_id=env.get("AUTH0_CLIENT_ID"),
+    client_secret=env.get("AUTH0_CLIENT_SECRET"),
+    client_kwargs={
+        "scope": "openid profile email",
+    },
+    server_metadata_url=f'https://{env.get("AUTH0_DOMAIN")}/.well-known/openid-configuration'
+)
 
 def internal_server_error(e):
     return redirect(request.referrer)
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if session.get('user') is None:
+            return redirect(url_for('login'))
+        try:
+            return f(*args, **kwargs)
+        except OAuthError:
+            return redirect(url_for('logout'))
+
+    return decorated
 
 HOST ="localhost"
 PORT = "5434"
@@ -15,8 +48,14 @@ PASSWORD ='bazepodataka'
 @app.route("/")
 def index():
     return render_template('index.html')
+@app.route("/info")
+@requires_auth
+def info():
+    return render_template('info.html', session=session.get('user'))
+
 
 @app.route("/datatable")
+@requires_auth
 def datatable():
     conn = psycopg2.connect(
         host = HOST,
@@ -30,6 +69,28 @@ def datatable():
     cur.close()
     conn.close()
     return render_template('datatable.html', data=data)
+
+@app.route("/login")
+def login():
+    return oauth.auth0.authorize_redirect(
+        redirect_uri=url_for("callback", _external=True)
+    )
+@app.route("/callback", methods=["GET", "POST"])
+def callback():
+    token = oauth.auth0.authorize_access_token()
+    session["user"] = token
+    return redirect("/home")
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
+
+@app.route("/home")
+@requires_auth
+def home():
+    return render_template("home.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
+
     
 
 @app.route("/api/ducani_vlasnici", methods= ['GET'])
@@ -45,14 +106,24 @@ def svi_ducani_i_vlasnici():
     data = cur.fetchall()
     cur.close()
     conn.close()
-    json_data = jsonify(data)
+    context = {
+        "@context": {
+            "vlasnici": "https://schema.org/Person",
+            "email": "https://schema.org/email",
+            "location": "https://schema.org/GeoCoordinates"
+        }
+    }
+    
+    json_data = json.dumps(data)
+    context = json.dumps(context) 
+    json_data = context + json_data
     if json_data != "":
-        response = app.response_class(response=json_data.get_data(as_text=True),
+        response = app.response_class(response=json_data,
                                   status=200,
                                   mimetype='application/json')
         response.headers['Message'] = "Uspjesan dohvat resursa"
     else:
-        response = app.response_class(response=json_data.get_data(as_text=True),
+        response = app.response_class(response=json_data,
                                   status=404,
                                   mimetype='application/json')
         response.headers['Message'] = "Resurs nije naden"
@@ -71,14 +142,24 @@ def specifican_ducan_i_vlasnik(id):
     data = cur.fetchall()
     cur.close()
     conn.close()
-    json_data = jsonify(data)
+    context = {
+        "@context": {
+            "vlasnici": "https://schema.org/Person",
+            "email": "https://schema.org/email",
+            "location": "https://schema.org/GeoCoordinates"
+        }
+    }
+    
+    json_data = json.dumps(data)
+    context = json.dumps(context) 
+    json_data = context + json_data
     if json_data != "":
-        response = app.response_class(response=json_data.get_data(as_text=True),
+        response = app.response_class(response=json_data,
                                   status=200,
                                   mimetype='application/json')
         response.headers['Message'] = "Uspjesan dohvat resursa"
     else:
-        response = app.response_class(response=json_data.get_data(as_text=True),
+        response = app.response_class(response=json_data,
                                   status=404,
                                   mimetype='application/json')
         response.headers['Message'] = "Resurs nije naden"
@@ -97,7 +178,16 @@ def ducani_tehnike():
     data = cur.fetchall()
     cur.close()
     conn.close()
-    json_data = jsonify(data)
+    context = {
+        "@context": {
+            "email": "https://schema.org/email",
+            "location": "https://schema.org/GeoCoordinates"
+        }
+    }
+    
+    json_data = json.dumps(data)
+    context = json.dumps(context) 
+    json_data = context + json_data
     if json_data != "":
         response = app.response_class(response=json_data.get_data(as_text=True),
                                   status=200,
@@ -144,14 +234,24 @@ def specifican_ducan(id):
     data = cur.fetchall()
     cur.close()
     conn.close()
-    json_data = jsonify(data)
+    context = {
+        "@context": {
+            "vlasnici": "https://schema.org/Person",
+            "email": "https://schema.org/email",
+            "location": "https://schema.org/GeoCoordinates"
+        }
+    }
+    
+    json_data = json.dumps(data)
+    context = json.dumps(context) 
+    json_data = context + json_data
     if json_data != "":
-        response = app.response_class(response=json_data.get_data(as_text=True),
+        response = app.response_class(response=json_data,
                                   status=200,
                                   mimetype='application/json')
         response.headers['Message'] = "Uspjesan dohvat resursa"
     else:
-        response = app.response_class(response=json_data.get_data(as_text=True),
+        response = app.response_class(response=json_data,
                                   status=404,
                                   mimetype='application/json')
         response.headers['Message'] = "Resurs nije naden"
@@ -170,14 +270,23 @@ def svi_vlasnici():
     data = cur.fetchall()
     cur.close()
     conn.close()
-    json_data = jsonify(data)
+    context = {
+        "@context": {
+            "ime": "https://schema.org/givenName",
+            "prezime": "https://schema.org/familyName",
+        }
+    }
+    
+    json_data = json.dumps(data)
+    context = json.dumps(context) 
+    json_data = context + json_data
     if json_data != "":
-        response = app.response_class(response=json_data.get_data(as_text=True),
+        response = app.response_class(response=json_data,
                                   status=200,
                                   mimetype='application/json')
         response.headers['Message'] = "Uspjesan dohvat resursa"
     else:
-        response = app.response_class(response=json_data.get_data(as_text=True),
+        response = app.response_class(response=json_data,
                                   status=404,
                                   mimetype='application/json')
         response.headers['Message'] = "Resurs nije naden"
@@ -217,14 +326,25 @@ def specifican_vlasnik(id):
     data = cur.fetchall()
     cur.close()
     conn.close()
-    json_data = jsonify(data)
+    context = {
+        "@context": {
+            "@context": {
+            "ime": "https://schema.org/givenName",
+            "prezime": "https://schema.org/familyName",
+        }
+        }
+    }
+    
+    json_data = json.dumps(data)
+    context = json.dumps(context) 
+    json_data = context + json_data
     if json_data != "":
-        response = app.response_class(response=json_data.get_data(as_text=True),
+        response = app.response_class(response=json_data,
                                   status=200,
                                   mimetype='application/json')
         response.headers['Message'] = "Uspjesan dohvat resursa"
     else:
-        response = app.response_class(response=json_data.get_data(as_text=True),
+        response = app.response_class(response=json_data,
                                   status=404,
                                   mimetype='application/json')
         response.headers['Message'] = "Resurs nije naden"

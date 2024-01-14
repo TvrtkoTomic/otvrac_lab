@@ -53,11 +53,10 @@
           "200": {
             "description": "Uspješan dohvat resursa"
           },
-          "400": {
-            "description": "Krivi ID upisan"
-          },
           "404": {
-            "description": "Resurs nije nađen"
+            "description": "Krivi ID upisan"
+          }
+          
           }
         }
       }
@@ -179,9 +178,7 @@
           "200": {
             "description": "Uspješan dohvat resursa"
           },
-          "400": {
-            "description": "Krivi ID upisan"
-          },
+          
           "404": {
             "description": "Resurs nije nađen"
           }
@@ -238,9 +235,6 @@
           "200": {
             "description": "Uspješan dohvat resursa"
           },
-          "400": {
-            "description": "Krivi ID upisan"
-          },
           "404": {
             "description": "Resurs nije nađen"
           }
@@ -292,4 +286,3 @@
       }
     }
   }
-}

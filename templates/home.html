@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Tvrtko Tomić">
+  <meta name="description" content="Web-stranica za prikaz podataka iz baze">
+  <meta name="keywords" content="dućan, tehnika, web-stranica">
+  <title>4. labos</title>
+  <link rel="stylesheet" href="static/index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome {{session.userinfo.nickname}}!</h1>
+    <p><a href="/logout">Logout</a></p>
+    <div class="link-container">
+      <a href='/info'>Informacije o korisniku</a>
+      <a href='static/ducani_tehnike.json'>Preslika baze u JSON</a>
+      <a href='static/ducani_tehnike.csv'>Preslika baze u CSV</a>
+      <a href="/datatable">Preusmjerenje na Datatable baze</a>
+
+    </div>
+  </div>
+</body>
+
+</html>
